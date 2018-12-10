@@ -37,7 +37,7 @@ namespace CorePracticeDemo.Controllers
         {
             user.Id = id;
 
-            return Ok(_userService.Create(user));
+            return Ok(_userService.Update(user));
         }
 
         [HttpDelete, Route("{id}")]
@@ -45,7 +45,7 @@ namespace CorePracticeDemo.Controllers
         {
             user.Id = id;
 
-            return Ok(_userService.Create(user));
+            return Ok(_userService.Delete(user));
         }
     }
 }
