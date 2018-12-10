@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CorePracticeDemo.Entities
 {
     [Table("User")]
-    public class User
+    public class UserEntity
     {
         [Key]
         public int UserId { get; set; }

@@ -17,17 +17,17 @@ namespace CorePracticeDemo.Repositories
             _context = context;
         }
 
-        private IQueryable<User> BaseQuery()
+        private IQueryable<UserEntity> BaseQuery()
         {
             //allows for user table to be updated with an IsDeleted column for soft deletion
             return _context.User;
         }
 
-        public User Create(User user)
+        public UserEntity Create(UserEntity userEntity)
         {
-            _context.User.Add(user);
+            _context.User.Add(userEntity);
             _context.SaveChanges();
-            return user;
+            return userEntity;
         }
 
         public bool DeleteById(int id)
@@ -41,12 +41,12 @@ namespace CorePracticeDemo.Repositories
             return true;
         }
 
-        public List<User> GetAll()
+        public List<UserEntity> GetAll()
         {
             return BaseQuery().ToList();
         }
 
-        public User GetById(int id)
+        public UserEntity GetById(int id)
         {
             var user = BaseQuery()
                 .FirstOrDefault(u => u.UserId == id);
@@ -54,13 +54,13 @@ namespace CorePracticeDemo.Repositories
             return user;
         }
 
-        public User Update(User user)
+        public UserEntity Update(UserEntity userEntity)
         {
-            _context.User.Attach(user);
-            _context.Entry(user).State = EntityState.Modified;
+            _context.User.Attach(userEntity);
+            _context.Entry(userEntity).State = EntityState.Modified;
             _context.SaveChanges();
 
-            return user;
+            return userEntity;
         }
     }
 }

@@ -5,7 +5,7 @@ namespace CorePracticeDemo.Data
 {
     public class DemoDataContext : DbContext
     {
-        public DbSet<User> User { get; set; }
+        public DbSet<UserEntity> User { get; set; }
 
         public DemoDataContext() : this("connectionString")
         {

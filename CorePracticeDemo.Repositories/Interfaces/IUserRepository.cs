@@ -9,10 +9,10 @@ namespace CorePracticeDemo.Repositories.Interfaces
 {
     public interface IUserRepository
     {
-        User Create(User user);
-        User Update(User user);
+        UserEntity Create(UserEntity userEntity);
+        UserEntity Update(UserEntity userEntity);
         bool DeleteById(int id);
-        User GetById(int id);
-        List<User> GetAll();
+        UserEntity GetById(int id);
+        List<UserEntity> GetAll();
     }
 }
