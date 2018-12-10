@@ -9,5 +9,6 @@ namespace CorePracticeDemo.Controllers
     [RoutePrefix("Users")]
     public class UserController : ApiController
     {
+
     }
 }
