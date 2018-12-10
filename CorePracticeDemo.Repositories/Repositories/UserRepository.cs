@@ -4,6 +4,7 @@ using CorePracticeDemo.Data;
 using CorePracticeDemo.Entities;
 using CorePracticeDemo.Repositories.Interfaces;
 using System.Linq;
+using System.Data.Entity;
 
 namespace CorePracticeDemo.Repositories
 {
@@ -18,32 +19,48 @@ namespace CorePracticeDemo.Repositories
 
         private IQueryable<User> BaseQuery()
         {
-            throw new NotImplementedException();
+            //allows for user table to be updated with an IsDeleted column for soft deletion
+            return _context.User;
         }
 
         public User Create(User user)
         {
-            throw new NotImplementedException();
+            _context.User.Add(user);
+            _context.SaveChanges();
+            return user;
         }
 
-        public User DeleteById(int id)
+        public bool DeleteById(int id)
         {
-            throw new NotImplementedException();
+            var user = GetById(id);
+            if (user == null) { return false; }
+
+            _context.User.Remove(user);
+            _context.SaveChanges();
+
+            return true;
         }
 
         public List<User> GetAll()
         {
-            throw new NotImplementedException();
+            return BaseQuery().ToList();
         }
 
         public User GetById(int id)
         {
-            throw new NotImplementedException();
+            var user = BaseQuery()
+                .FirstOrDefault(u => u.UserId == id);
+
+            return user;
         }
 
         public User Update(User user)
         {
-            throw new NotImplementedException();
+            _context.User.Attach(user);
+            _context.Entry(user).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return user;
         }
     }
 }
