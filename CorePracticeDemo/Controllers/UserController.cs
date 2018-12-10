@@ -39,5 +39,13 @@ namespace CorePracticeDemo.Controllers
 
             return Ok(_userService.Create(user));
         }
+
+        [HttpDelete, Route("{id}")]
+        public IHttpActionResult DeleteUser(int id, User user)
+        {
+            user.Id = id;
+
+            return Ok(_userService.Create(user));
+        }
     }
 }
