@@ -11,7 +11,7 @@ namespace CorePracticeDemo.Repositories.Interfaces
     {
         User Create(User user);
         User Update(User user);
-        User DeleteById(int id);
+        bool DeleteById(int id);
         User GetById(int id);
         List<User> GetAll();
     }
